@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crerate a new Itinerary!</title>
+</head>
+<body>
+    <h1>Create a new itinerary!</h1>
+    <form action="/destinations" method="POST">
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="destination"/>
+        <label for="accommodation">Accommodation(s):</label>
+        <input type="text" name="accommodation" id="accommodation"/>
+        <label for="recommendedLinks">Recommmended Links:</label>
+        <input type="text" name="recommendedLinks" id="recommendedLinks"/>
+        <label for="travelDates">Dates Of Travel:</label>
+        <input type="text" name="travelDates" id="travelDates"/>
+        <label for="tips">Helpful Suggestions:</label>
+        <input type="text" name="tips" id="tips"/>
+        <button type="submit">Add New Trip</button>
+    </form>
+</body>
+</html>
