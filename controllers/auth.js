@@ -13,7 +13,7 @@ router.get('/sign-in', (req, res)=>{
     res.render('auth/sign-in.ejs')
 });
 
-
+//create sign out load here
 
 router.post('/sign-up', async (req, res)=> {
     try {
@@ -30,6 +30,7 @@ router.post('/sign-up', async (req, res)=> {
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
         req.body.password = hashedPassword;
 
+// create user
         await User.create(req.body);
 
         res.redirect('/auth/sign-in')
@@ -57,7 +58,7 @@ if (!userInDatabase){
         username: userInDatabase.username,
         _id: userInDatabase._id
     }
-
+console.log("BODY:", req.body); console.log("USER:", userInDatabase);
     res.redirect('/')
 }catch (error) {
         console.log(error)
