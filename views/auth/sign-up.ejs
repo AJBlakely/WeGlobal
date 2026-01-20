@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 <body>
     <h1> Create a new account</h1>
-    <div>
+    <div class="auth-container">
     <form action="/auth/sign-up" method="POST">
-        <label for="username">Username:</label>
+        <label for="username">Username:</label><br>
         <input type="text" name="username" id="username" required/>
-    </div>
-    <div>
-
-        <label for="password">Password:</label>
+    <br>
+        <label for="password">Password:</label><br>
         <input type="password" name="password" id="password" required />
-        <label for="confirmPassword">Confirm Password:</label>
+        <br>
+        <label for="confirmPassword">Confirm Password:</label><br>
         <input type="password" name="confirmPassword" id="confirmPassword" required />
-    </div>
+        <br>
         <button type="submit">Sign Up</button>
     </form>
     <p>
-        Already have an account?<a href="/auth/sign-in">Sign In!</a>
+        Already have an account?  <a href="/auth/sign-in" style="border:none; padding:0; text-decoration: underline;">Sign In!</a>
     </p>
+</div>
 </body>
 </html>

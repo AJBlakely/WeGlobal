@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Trips</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/partials.css">
+    
 </head>
 <body>
+    <div class="conatiner"> <%- include('../partials/_navbar.ejs') %>
     <div>
-    <div>
-        <%- include('../partials/_navbar.ejs') %>
         <h1>Your Trips</h1>
         <a class="add-trip-link" href="/users/<%=user._id%>/trips/new">Add a new Trip</a>
     </div>

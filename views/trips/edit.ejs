@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Editing <%= trip.destination %> on <%= trip.startDate %> to <%= trip.endDate %></h1>   
+    <h1>Editing <%= trip.destination %> on <%= trip.startDate.toLocaleDateString('en-US') %> to <%= trip.endDate.toLocaleDateString('en-US') %></h1>   
     <div class="edit-body">
 
         <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=PUT" method="POST">
 
             <label for="destination">Destination:</label>
             <input type="text" name="destination" id="destination" value="<%= trip.destination %>" required>
-
-            <label>Accommodations:</label>
+<br>
+            <label>Accommodations:</label><br>
             <% for (let i = 0; i < 3; i++) { %> 
                 <input type="text" name="accommodation[]" placeholder="Hotel/Stay <%= i + 1 %>" 
                    value="<%= trip.accommodation[i] ? trip.accommodation[i] : '' %>"><br>

@@ -1,21 +1,15 @@
-<!-- <link rel="stylesheet" href="" -->
-
-<nav>
-    <% if (user) { %>
-    <div class="navbar">
-        <h1 id="nav-header">WeGlobal</h1>
+<nav class="navbar">
+    <div class="nav-container">
+        <h1 id="nav-header"><a href="/" style="color: inherit; text-decoration: none;">WeGlobal</a></h1>
+        
         <div class="nav-links">
-            <a class="authlink" href="/users/<%= user._id %>/trips">Your Trips</a>
-            <a class="authlink" href="/auth/sign-out">Sign Out</a>
+            <% if (user) { %>
+                <a class="authlink" href="/users/<%= user._id %>/trips">YOUR TRIPS</a>
+                <a class="authlink" href="/auth/sign-out">SIGN OUT</a>
+            <% } else { %>
+                <a class="authlink" href="/auth/sign-in">SIGN IN</a>
+                <a class="authlink" href="/auth/sign-up">SIGN UP</a>
+            <% } %>
         </div>
     </div>
-   <% } else { %>
-    <div class="navbar">
-        <h1 id="nav-header">WeGlobal</h1>
-        <div class="nav-links">
-            <a class="authlink" href="/auth/sign-in">Sign In</a>
-            <a class="authlink" href="/auth/sign-up">sign Up</a>
-        </div>
-    </div>
-   <% } %>
 </nav>

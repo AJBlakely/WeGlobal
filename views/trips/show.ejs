@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= trip.destination %> Details</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <div class="container">
+        <div class="header-image-container"></div>
+
         <h1><%= trip.destination %></h1>
 
-        <p>
+        <p class="date-range">
             <strong>Dates:</strong>
             <%= trip.startDate ? trip.startDate.toDateString() : 'N/A' %>
             to
             <%= trip.endDate ? trip.endDate.toDateString() : 'N/A' %>
         </p>
-
+    <div>
         <h3>Accommodations</h3>
         <ul>
             <% trip.accommodation.forEach(place => { %>
@@ -43,10 +46,10 @@
 
         <h3>Helpful Tips</h3>
         <p><%= trip.tips %></p>
+        </div>
+        
 
-        <hr>
-
-        <div style="margin-top: 30px; display: flex; gap: 10px;">
+        <div style="margin-top: 40px; display: flex; gap: 15px; align-items: center;">
             <a href="/users/<%= user._id %>/trips/<%= trip._id %>/edit" class="btn-edit">Edit Trip Details</a>
 
             <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=DELETE" method="POST">
