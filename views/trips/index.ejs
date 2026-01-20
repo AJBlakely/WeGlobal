@@ -12,9 +12,9 @@
         <a class="add-trip-link" href="/users/<%=user._id%>/trips/new">Add a new Trip</a>
     </div>
     <ul>
-        <% trips.forEach((trips)=> { %>
+        <% trips.forEach((trip)=> { %>
             <li>
-                <a href="/users/<%= user._id %>/trips/<%= trips._id %>"><%= trips.destination %> on <%= trips.travelDates %></a>
+                <a href="/users/<%= user._id %>/trips/<%= trip._id %>"><%= trip.destination %> on <%= trip.travelDates %></a>
             </li>
             <%   }) %>
         </ul>

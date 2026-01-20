@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= trip.destination %> Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1><%= trip.destination %></h1>
+
+        <p>
+            <strong>Dates:</strong>
+            <%= trip.startDate ? trip.startdate.toDateString() : 'N/A' %>
+            to
+            <%= trip.endDate ? trip.endDate.toDateString() : 'N/A' %>
+        </p>
+
+        <h3>Accommodations</h3>
+        <ul>
+            <% trip.accommodation.forEach(place => { %>
+                <% if (place) { %> < li><%= place %></li> <% } %>
+            <% }) %>
+        </ul>
+
+        <h3>Things to do:</h3>
+        <% if (trip.event1 && trip.event1.activity) { %>
+            <div class="event-slot">
+                <%= trip.event1.time %> - <%= trip.event1.activity %>
+                <% if (trip.event1.link) { %> | <a href="<%= trip.event1.link %>" target="_blank">Link</a> <% } %>
+            </div>
+        <% } %>
+        
+        <% if (trip.event2 && trip.event2.activity) { %>
+            <div class="event-slot">
+                <%= trip.event2.time %> - <%= trip.event2.activity %>
+                <% if (trip.event2.link) { %> | <a href="<%= trip.event2.link %>" target="_blank">Link</a> <% } %>
+            </div>
+        <% } %>
+
+        <% if (trip.event3 && trip.event3.activity) { %>
+            <div class="event-slot">
+                <%= trip.event3.time %> - <%= trip.event3.activity %>
+                <% if (trip.event3.link) { %> | <a href="<%= trip.event3.link %>" target="_blank">Link</a> <% } %>
+            </div>
+        <% } %>
+
+        <% if (trip.event4 && trip.event4.activity) { %>
+            <div class="event-slot">
+                <%= trip.event4.time %> - <%= trip.event4.activity %>
+                <% if (trip.event4.link) { %> | <a href="<%= trip.event4.link %>" target="_blank">Link</a> <% } %>
+            </div>
+        <% } %>
+
+        <% if (trip.event5 && trip.event5.activity) { %>
+            <div class="event-slot">
+                <%= trip.event5.time %> - <%= trip.event5.activity %>
+                <% if (trip.event5.link) { %> | <a href="<%= trip.event5.link %>" target="_blank">Link</a> <% } %>
+            </div>
+        <% } %>
+
+        <h3>Helpful Tips</h3>
+        <p><%= trip.tips %></p>
+
+        <hr>
+
+        <div style="margin-top: 30px; display: flex; gap: 10px;">
+            <a href="/users/<%= user._id %>/trips/<%= trip._id %>/edit" class="btn-edit">Edit Trip Details</a>
+
+            <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn-delete">Delete Destination</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

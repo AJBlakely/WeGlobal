@@ -2,12 +2,17 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
+app.use((req, res, next) => {
+  console.log(`Incoming Request: ${req.method} ${req.url}`);
+  next();
+});
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 const isSignedIn = require('./middleware/isSignedIn')
 const passUserToView = require('./middleware/passUserToView')
+const path = require('path')
 const authController = require('./controllers/auth');
 const tripsController = require('./controllers/trips')
 
@@ -20,11 +25,12 @@ mongoose.connection.on('connected', ()=> {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 });
 //
-const User = require('../WeGlobal/models/user');
+// const User = require('../WeGlobal/models/user');
 
 app.use(express.urlencoded({ extended: false}));
 
 app.use(methodOverride('_method'));
+//app.use(express.static(path.join(__dirnaame, 'public')))
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -33,8 +39,6 @@ app.use(
     })
 );
 app.use(passUserToView);
-
-app.use(morgan('dev'));
 
 
 //          ROUTES
@@ -49,24 +53,12 @@ app.get('/', (req, res)=>{
 }
     });
 
-
           //funnels request with /auth through authController
 app.use('/auth', authController)
 app.use(isSignedIn)    
 app.use('/users/:userId/trips', tripsController)
 
 
-    /*
-//   INDEX
-app.get('/trips', (req, res)=>{
-    res.render('trips/index.ejs')
-});
-
-//    NEW
-app.get('/itinerary/new', async (req, res)=> {
-    res.render('trips/new.ejs')
-});
-*/
 
 app.listen(port, ()=>{
     console.log(`The app is running on port ${port}`)

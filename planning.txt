@@ -12,3 +12,4 @@ As a user, I want when I select the dates for my travel, the page populates one 
 
 As a user, I want to be able to press a button while looking at the certain destination and go to the next destination based on chronological order.
 
+As a user, I want to be able to type in the destinations and as im typing suggestions populate.

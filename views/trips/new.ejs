@@ -3,21 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crerate a new Itinerary!</title>
+    <title>Create a new Itinerary!</title>
 </head>
 <body>
     <h1>Create a new itinerary!</h1>
-    <form action="/destinations" method="POST">
+    <form action="/users/<%= user._id %>/trips" method="POST">
+        <!--Destination-->
         <label for="destination">Destination:</label>
-        <input type="text" name="destination" id="destination"/>
+        <input type="text" name="destination" id="destination" required/><br>
+
         <label for="accommodation">Accommodation(s):</label>
-        <input type="text" name="accommodation" id="accommodation"/>
-        <label for="recommendedLinks">Recommmended Links:</label>
-        <input type="text" name="recommendedLinks" id="recommendedLinks"/>
-        <label for="travelDates">Dates Of Travel:</label>
-        <input type="text" name="travelDates" id="travelDates"/>
-        <label for="tips">Helpful Suggestions:</label>
+        <input type="text" name="accommodation[]" id="accommodation 1"/><br>
+        <input type="text" name="accommodation[]" id="accommodation 2 (optional)"/><br>
+        <input type="text" name="accommodation[]" id="accommodation 3 (optional)"/><br>
+        
+        <label>Dates:</label>
+        <input type="date" name="startDate">
+        to
+        <input type="date" name="endDate"><br>
+
+            <h3>Events</h3>
+        <label for="event1">Event 1:</label>
+        <input type="time" name="event1[time]" placeholder="Time" />
+        <input type="text" name="event1[activity]" placeholder="Activity" />
+        <input type="text" name="event1[link]" placeholder="Link" /> <br><br>
+
+        <label for="event2">Event 2:</label>
+        <input type="time" name="event2[time]" placeholder="Time" />
+        <input type="text" name="event2[activity]" placeholder="Activity" />
+        <input type="text" name="event2[link]" placeholder="Link" /> <br><br>
+
+        <label for="event3">Event 3:</label>
+        <input type="time" name="event3[time]" placeholder="Time" />
+        <input type="text" name="event3[activity]" placeholder="Activity" />
+        <input type="text" name="event3[link]" placeholder="Link" /> <br><br>
+
+        <label for="event4">Event 4:</label>
+        <input type="time" name="event4[time]" placeholder="Time" />
+        <input type="text" name="event4[activity]" placeholder="Activity" />
+        <input type="text" name="event4[link]" placeholder="Link" /> <br><br>
+
+        <label for="event5">Event 5:</label>
+        <input type="time" name="event5[time]" placeholder="Time" />
+        <input type="text" name="event5[activity]" placeholder="Activity" />
+        <input type="text" name="event5[link]" placeholder="Link" /> <br><br>
+
+        <label for="tips">Tips:</label>
         <input type="text" name="tips" id="tips"/>
+
         <button type="submit">Add New Trip</button>
     </form>
 </body>

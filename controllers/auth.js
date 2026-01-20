@@ -13,7 +13,10 @@ router.get('/sign-in', (req, res)=>{
     res.render('auth/sign-in.ejs')
 });
 
-//create sign out load here
+router.get('/sign-out', (req, res)=> {
+    req.session.destroy()
+    res.redirect('/')
+})
 
 router.post('/sign-up', async (req, res)=> {
     try {
@@ -44,7 +47,7 @@ router.post('/sign-up', async (req, res)=> {
 router.post('/sign-in', async (req, res) => {
     try{
         //find user
-        const userInDatabase = await User.findOne({username: req.body.username});
+        const userInDatabase = await User.findOne({ username: req.body.username });
 if (!userInDatabase){
     return res.send('Login Failed. Please try again!')
 }
@@ -58,7 +61,7 @@ if (!userInDatabase){
         username: userInDatabase.username,
         _id: userInDatabase._id
     }
-console.log("BODY:", req.body); console.log("USER:", userInDatabase);
+
     res.redirect('/')
 }catch (error) {
         console.log(error)
