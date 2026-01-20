@@ -8,13 +8,17 @@
 <body>
     <div>
     <div>
+        <%- include('../partials/_navbar.ejs') %>
         <h1>Your Trips</h1>
         <a class="add-trip-link" href="/users/<%=user._id%>/trips/new">Add a new Trip</a>
     </div>
     <ul>
         <% trips.forEach((trip)=> { %>
             <li>
-                <a href="/users/<%= user._id %>/trips/<%= trip._id %>"><%= trip.destination %> on <%= trip.travelDates %></a>
+                <a href="/users/<%= user._id %>/trips/<%= trip._id %>">
+                    <%= trip.destination %> on 
+                    <%= trip.startDate ? trip.startDate.toLocaleDateString('en-US') : 'N/A' %> -
+                    <%= trip.endDate ? trip.endDate.toLocaleDateString('en-US') : 'N/A' %></a>
             </li>
             <%   }) %>
         </ul>

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 //each trip
 const itinerarySchema = mongoose.Schema({
     destination: {type: String, required: true},
-    accommodation: [{type: String, required: true}],
+    accommodation: [{type: String}],
     startDate: {type: Date},
     endDate: {type: Date},
     event1: {time: String, activity: String, link: String },

@@ -24,13 +24,14 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', ()=> {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 });
-//
-// const User = require('../WeGlobal/models/user');
 
-app.use(express.urlencoded({ extended: false}));
+
+app.use(express.urlencoded({ extended: true}));
 
 app.use(methodOverride('_method'));
-//app.use(express.static(path.join(__dirnaame, 'public')))
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
     session({
         secret: process.env.SESSION_SECRET,

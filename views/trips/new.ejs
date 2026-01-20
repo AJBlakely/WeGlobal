@@ -6,6 +6,7 @@
     <title>Create a new Itinerary!</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Create a new itinerary!</h1>
     <form action="/users/<%= user._id %>/trips" method="POST">
         <!--Destination-->

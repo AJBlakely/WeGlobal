@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
 </head>
 <body>
-    
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Editing <%= trip.destination %> on <%= trip.startDate %> to <%= trip.endDate %></h1>   
+    <div class="edit-body">
+
+        <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=PUT" method="POST">
+
+            <label for="destination">Destination:</label>
+            <input type="text" name="destination" id="destination" value="<%= trip.destination %>" required>
+
+            <label>Accommodations:</label>
+            <% for (let i = 0; i < 3; i++) { %> 
+                <input type="text" name="accommodation[]" placeholder="Hotel/Stay <%= i + 1 %>" 
+                   value="<%= trip.accommodation[i] ? trip.accommodation[i] : '' %>"><br>
+            <% } %>
+            
+            <label>Dates:</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="date" name="startDate" value="<%= trip.startDate ? trip.startDate.toISOString().split('T')[0] : '' %>">
+                    <input type="date" name="endDate" value="<%= trip.endDate ? trip.endDate.toISOString().split('T')[0] : '' %>">
+                </div>
+
+            <h3>Events</h3>
+            <% [1, 2, 3, 4, 5].forEach(num =>{ %>
+                <div class="event-group">
+                    <label>Event <%= num %>:</label>
+                    <input type="time" name="event<%= num %>[time]" value="<%= trip['event' + num] ? trip['event' + num].time : '' %>">
+                    <input type="text" name="event<%= num %>[activity]" placeholder="Activity" value="<%= trip['event' + num] ? trip['event' + num].activity : '' %>">
+                    <input type="text" name="event<%= num %>[link]" placeholder="Link" value="<%= trip['event' + num] ? trip['event' + num].link : '' %>">
+                </div>
+            <% }) %>
+
+            <label for="tips">Tips:</label>
+            <input type="text" name="tips" id="tips" value="<%= trip.tips %>">
+
+            <button type="submit" class="save-btn">Update Trip Info</button>
+        </form>
+        <p style="text-align: center;">
+            <a href="/users/<%= user._id %>/trips/<%= trip.id %>">Cancel and Go Back</a>
+        </p>
+    </div> 
 </body>
 </html>
