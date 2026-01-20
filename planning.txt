@@ -7,7 +7,9 @@ As a user, I need to be able to click on any destination on my page and see deta
 As a user, when I'm looking at the information of my trips, I want to be able to edit any of the data. There should be easily distinguishable button that takes me to a different page so that i can update any data that I need to.
 
 As a user, if I'm looking at the details of a destination, I want to the ability to delete the destination entirely with the click of a button.
+                                
 
+                                FUTURE BUILDOUT
 As a user, I want when I select the dates for my travel, the page populates one time slot for each date and a button for me to add a new slot if necessary. There should be a field for me to add a link under each time slot.
 
 As a user, I want to be able to press a button while looking at the certain destination and go to the next destination based on chronological order.
