@@ -1,10 +1,11 @@
 /* General Layout */
 body {
-    background-color: #050505; /* Deep space black */
+    background-color: #050505; 
     color: #e0e0e0;
     margin: 0;
     line-height: 1.6;
     font-family: 'Inter', system-ui, sans-serif;
+   
 }
 
 .container {
@@ -51,7 +52,7 @@ h3 {
 }
 
 .event-slot strong {
-    color: orange; /* Highlights the time */
+    color: orange; 
 }
 
 /* Action Buttons */
@@ -102,12 +103,13 @@ h3 {
     width: 100%;
 }
 
+
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px; /* Limits how far wide the links go on big screens */
+    max-width: 1200px; 
     padding: 30px 40px;
 }
 
@@ -126,14 +128,23 @@ h3 {
 
 .authlink {
     text-decoration: none;
-    color: white !important; /* Forces font to stay white */
-    font-weight: 800; /* Extra Bold */
+    color: white !important; 
+    font-weight: 800; 
     font-size: 0.9rem;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .authlink:hover {
-    color: #00d1b2 !important; /* Or keep orange if you prefer */
+    color: #00d1b2 !important; 
     opacity: 0.8;
+}
+
+/*btns link*/
+a {
+    color:#fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    transition: 0.3s;
 }
